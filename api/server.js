@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cookieParser from "cookie-parser";
 
 import authRoutes from "./routes/auth.routes.js";
 import connectMongoDB from "./db/connectMongoDB.js";
@@ -9,6 +10,11 @@ dotenv.config();
 const PORT = process.env.PORT || 5000;
 
 // middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+// routes
 app.use("/api/auth", authRoutes);
 
 // for deployment
