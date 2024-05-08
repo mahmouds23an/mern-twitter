@@ -10,12 +10,7 @@ import toast from "react-hot-toast";
 
 const Sidebar = () => {
   // use it when you need to manipulate the data like creating, editing and deleting
-  const {
-    mutate: logoutMutation,
-    isError,
-    isPending,
-    error,
-  } = useMutation({
+  const { mutate: logoutMutation } = useMutation({
     mutationFn: async () => {
       try {
         const res = await fetch("/api/auth/logout", {
@@ -30,6 +25,9 @@ const Sidebar = () => {
     },
     onSuccess: () => {
       toast.success("Logged out successfully");
+    },
+    onError: () => {
+      toast.error("Failed to logout");
     },
   });
 
