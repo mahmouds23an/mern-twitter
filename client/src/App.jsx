@@ -21,6 +21,7 @@ function App() {
       try {
         const res = await fetch("/api/auth/me");
         const data = await res.json();
+        if (data.error) return null;
         if (!res.ok) throw new Error(data.error || "Something went wrong");
         console.log("auth user:", data);
         return data;
