@@ -1,7 +1,7 @@
 import { FaRegComment } from "react-icons/fa";
-import { BiRepost } from "react-icons/bi";
+// import { BiRepost } from "react-icons/bi";
 import { FaRegHeart } from "react-icons/fa";
-import { FaRegBookmark } from "react-icons/fa6";
+// import { FaRegBookmark } from "react-icons/fa6";
 import { FaTrash } from "react-icons/fa";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -117,7 +117,7 @@ const Post = ({ post }) => {
 
   return (
     <>
-      <div className="flex gap-2 items-start p-4 border-b border-gray-700">
+      <div className="flex gap-2 items-start p-4 border-b border-zinc-500">
         <div className="avatar">
           <Link
             to={`/profile/${postOwner.username}`}
@@ -161,7 +161,7 @@ const Post = ({ post }) => {
             )}
           </div>
           <div className="flex justify-between mt-3">
-            <div className="flex gap-4 items-center w-2/3 justify-between">
+            <div className="flex gap-6 items-center w-2/3 justify-start">
               <div
                 className="flex gap-1 items-center cursor-pointer group"
                 onClick={() =>
@@ -182,6 +182,7 @@ const Post = ({ post }) => {
               >
                 <div className="modal-box rounded border border-gray-600">
                   <h3 className="font-bold text-lg mb-4">COMMENTS</h3>
+                  <hr className="mb-2 -mt-3 w-28 " />
                   <div className="flex flex-col gap-3 max-h-60 overflow-auto">
                     {post.comments.length === 0 && (
                       <p className="text-sm text-slate-500">
@@ -200,7 +201,7 @@ const Post = ({ post }) => {
                             />
                           </div>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col w-full">
                           <div className="flex items-center gap-1">
                             <span className="font-bold">
                               {comment.user.fullName}
@@ -210,6 +211,7 @@ const Post = ({ post }) => {
                             </span>
                           </div>
                           <div className="text-sm">{comment.text}</div>
+                          <hr className="mx-auto w-1/2 mb-3 mt-3 border-gray-200 dark:border-gray-700" />
                         </div>
                       </div>
                     ))}
@@ -233,12 +235,12 @@ const Post = ({ post }) => {
                   <button className="outline-none">close</button>
                 </form>
               </dialog>
-              <div className="flex gap-1 items-center group cursor-pointer">
+              {/* <div className="flex gap-1 items-center group cursor-pointer">
                 <BiRepost className="w-6 h-6  text-slate-500 group-hover:text-green-500" />
                 <span className="text-sm text-slate-500 group-hover:text-green-500">
                   0
                 </span>
-              </div>
+              </div> */}
               <div
                 className="flex gap-1 items-center group cursor-pointer"
                 onClick={handleLikePost}
@@ -260,9 +262,9 @@ const Post = ({ post }) => {
                 </span>
               </div>
             </div>
-            <div className="flex w-1/3 justify-end gap-2 items-center">
+            {/* <div className="flex w-1/3 justify-end gap-2 items-center">
               <FaRegBookmark className="w-4 h-4 text-slate-500 cursor-pointer" />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

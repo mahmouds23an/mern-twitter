@@ -27,7 +27,8 @@ const RightPanel = () => {
   return (
     <div className="hidden lg:block my-4 mx-2">
       <div className="bg-[#16181C] p-4 rounded-md sticky top-2">
-        <p className="font-bold">Who to follow</p>
+        <p className="font-bold">People you may know</p>
+        <hr className="mt-2 mb-2" />
         <div className="flex flex-col gap-4">
           {/* item */}
           {isLoading && (
@@ -62,7 +63,7 @@ const RightPanel = () => {
                 </div>
                 <div>
                   <button
-                    className="btn bg-white text-black hover:bg-white hover:opacity-90 rounded-full btn-sm"
+                    className="btn bg-zinc-400 text-black hover:bg-white rounded-full btn-sm"
                     onClick={(e) => {
                       e.preventDefault();
                       follow(user._id);
