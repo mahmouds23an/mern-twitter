@@ -211,7 +211,7 @@ const Post = ({ post }) => {
                             </span>
                           </div>
                           <div className="text-sm">{comment.text}</div>
-                          <hr className="mx-auto w-1/2 mb-3 mt-3 border-gray-200 dark:border-gray-700" />
+                          <hr className="mx-auto md:w-1/2 w-full mb-3 mt-3 border-gray-200 dark:border-gray-700" />
                         </div>
                       </div>
                     ))}
