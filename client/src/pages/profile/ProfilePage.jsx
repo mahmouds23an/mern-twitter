@@ -7,7 +7,7 @@ import EditProfileModal from "./EditProfileModal";
 
 import { FaArrowLeft } from "react-icons/fa6";
 import { IoCalendarOutline } from "react-icons/io5";
-import { FaLink } from "react-icons/fa";
+// import { FaLink } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 import { useQuery } from "@tanstack/react-query";
 import { formatMemberSinceDate } from "../../utils/date";
@@ -84,7 +84,9 @@ const ProfilePage = () => {
                   <FaArrowLeft className="w-4 h-4" />
                 </Link>
                 <div className="flex flex-col">
-                  <p className="font-bold text-lg capitalize">{user?.fullName}</p>
+                  <p className="font-bold text-lg capitalize">
+                    {user?.fullName}
+                  </p>
                 </div>
               </div>
               {/* COVER IMG */}
@@ -175,17 +177,17 @@ const ProfilePage = () => {
                 <div className="flex gap-2 flex-wrap">
                   {user?.link && (
                     <div className="flex gap-1 items-center ">
-                      <>
+                      {/* <>
                         <FaLink className="w-3 h-3 text-slate-500" />
                         <a
-                          href="https://youtube.com/@asaprogrammer_"
+                          href=""
                           target="_blank"
                           rel="noreferrer"
                           className="text-sm text-blue-500 hover:underline"
                         >
                           {user?.link}
                         </a>
-                      </>
+                      </> */}
                     </div>
                   )}
                   <div className="flex gap-2 items-center">
