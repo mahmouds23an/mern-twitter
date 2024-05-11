@@ -87,6 +87,48 @@ export const commentOnPost = async (req, res) => {
   }
 };
 
+export const likeUnLikeComment = async (req, res) => {
+  try {
+    const userId = req.user._id;
+    const { postId, commentId } = req.params;
+    // Find the post to which the comment belongs
+    const post = await Post.findById(postId);
+    if (!post) {
+      return res.status(404).json({ error: "Post not found" });
+    }
+    // Find the specific comment within the post
+    const comment = post.comments.find(
+      (comment) => comment._id.toString() === commentId
+    );
+    if (!comment) {
+      return res.status(404).json({ error: "Comment not found" });
+    }
+    const userLikedComment = comment.likes.includes(userId);
+    if (userLikedComment) {
+      // Unlike this comment
+      comment.likes = comment.likes.filter(
+        (id) => id.toString() !== userId.toString()
+      );
+      await post.save();
+      res.status(200).json({ message: "Unliked", data: comment.likes });
+    } else {
+      // Like this comment
+      comment.likes.push(userId);
+      await post.save();
+      // Send notification
+      const notification = new Notification({
+        type: "like",
+        from: userId,
+        to: comment.user,
+      });
+      await notification.save();
+      res.status(200).json({ message: "Liked", data: comment.likes });
+    }
+  } catch (err) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 export const deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);

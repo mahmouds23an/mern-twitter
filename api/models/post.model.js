@@ -1,4 +1,3 @@
-import { text } from "express";
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema(
@@ -31,6 +30,12 @@ const postSchema = new mongoose.Schema(
           ref: "User",
           required: true,
         },
+        likes: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+          },
+        ],
       },
     ],
   },
