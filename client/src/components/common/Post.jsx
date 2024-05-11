@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 import LoadingSpinner from "./LoadingSpinner";
 import { formatPostDate } from "../../utils/date";
@@ -103,13 +103,13 @@ const Post = ({ post }) => {
 
   const handleDeletePost = () => {
     Swal.fire({
-      title: 'Are you sure?',
+      title: "Are you sure?",
       text: "You won't be able to revert this!",
-      icon: 'warning',
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         deletePost();
@@ -195,7 +195,7 @@ const Post = ({ post }) => {
               >
                 <div className="modal-box rounded border border-gray-600">
                   <h3 className="font-bold text-lg mb-4">COMMENTS</h3>
-                  <hr className="mb-2 -mt-3 w-28 " />
+                  <hr className="mb-5 -mt-3 w-28 " />
                   <div className="flex flex-col gap-3 max-h-60 overflow-auto">
                     {post.comments.length === 0 && (
                       <p className="text-sm text-slate-500">
@@ -205,7 +205,7 @@ const Post = ({ post }) => {
                     {post.comments.map((comment) => (
                       <div key={comment._id} className="flex gap-2 items-start">
                         <div className="avatar">
-                          <div className="w-8 rounded-full">
+                          <div className="w-10 rounded-full">
                             <img
                               src={
                                 comment.user.profileImg ||
@@ -218,9 +218,6 @@ const Post = ({ post }) => {
                           <div className="flex items-center gap-1">
                             <span className="font-bold">
                               {comment.user.fullName}
-                            </span>
-                            <span className="text-gray-700 text-sm">
-                              @{comment.user.username}
                             </span>
                           </div>
                           <div className="text-sm">{comment.text}</div>
