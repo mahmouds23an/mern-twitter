@@ -12,6 +12,7 @@ import RightPanel from "./components/common/RightPanel";
 import { Toaster } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "./components/common/LoadingSpinner";
+import SuggestedFriends from "./pages/suggestedFriends/SuggestedFriends";
 
 function App() {
   const { data: authUser, isLoading } = useQuery({
@@ -65,6 +66,10 @@ function App() {
         <Route
           path="/profile/:username"
           element={authUser ? <ProfilePage /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/suggested-friends"
+          element={authUser ? <SuggestedFriends /> : <Navigate to="/login" />}
         />
       </Routes>
       {authUser && <RightPanel />}

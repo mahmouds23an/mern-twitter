@@ -113,11 +113,6 @@ const Post = ({ post }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         deletePost();
-        Swal.fire({
-          title: 'Deleted!',
-          text: 'Your file has been deleted.',
-          icon: 'success',
-        });
       }
     });
   };

@@ -27,8 +27,13 @@ const RightPanel = () => {
   return (
     <div className="hidden lg:block my-4 mx-2">
       <div className="bg-[#16181C] p-4 rounded-md sticky top-2">
-        <p className="font-bold">People you may know</p>
-        <hr className="mt-2 mb-2" />
+        <Link
+          to="/suggested-friends"
+          className="font-bold text-slate-600 hover:text-white"
+        >
+          People you may know
+        </Link>
+        <hr className="mt-2 mb-2 border-slate-600" />
         <div className="flex flex-col gap-4">
           {/* item */}
           {isLoading && (
