@@ -13,6 +13,10 @@ const postSchema = new mongoose.Schema(
     img: {
       type: String,
     },
+    sharedPost: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,

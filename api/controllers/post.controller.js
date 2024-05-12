@@ -151,6 +151,29 @@ export const deletePost = async (req, res) => {
   }
 };
 
+export const sharePost = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const userId = req.user._id;
+    const postToShare = await Post.findById(postId);
+    if (!postToShare) {
+      return res.status(404).json("Post not found");
+    }
+    const newSharedPost = new Post({
+      user: userId,
+      sharedPost: postId,
+      text: postToShare.text,
+      img: postToShare.img,
+    });
+    await newSharedPost.save();
+    res
+      .status(201)
+      .json({ message: "Post shared successfully", data: newSharedPost });
+  } catch (err) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
+
 export const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find()

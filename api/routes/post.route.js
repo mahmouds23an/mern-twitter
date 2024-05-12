@@ -8,6 +8,7 @@ import {
   commentOnPost,
   likeUnLikeComment,
   deletePost,
+  sharePost,
   getAllPosts,
   getLikedPosts,
   getFollowingPosts,
@@ -18,8 +19,13 @@ import {
 router.post("/create", protectRoute, createPost);
 router.post("/like/:id", protectRoute, likeUnLikePost);
 router.post("/comment/:id", protectRoute, commentOnPost);
-router.post("/like/:postId/comment/:commentId", protectRoute, likeUnLikeComment);
+router.post(
+  "/like/:postId/comment/:commentId",
+  protectRoute,
+  likeUnLikeComment
+);
 router.delete("/:id", protectRoute, deletePost);
+router.post("/share/:postId", protectRoute, sharePost);
 router.get("/all", protectRoute, getAllPosts);
 router.get("/likes/:id", protectRoute, getLikedPosts);
 router.get("/following", protectRoute, getFollowingPosts);
