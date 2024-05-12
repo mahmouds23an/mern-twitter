@@ -166,6 +166,13 @@ export const sharePost = async (req, res) => {
       img: postToShare.img,
     });
     await newSharedPost.save();
+    //   send notification
+    const notification = new Notification({
+      type: "share",
+      from: userId,
+      to: postToShare.user,
+    });
+    await notification.save();
     res
       .status(201)
       .json({ message: "Post shared successfully", data: newSharedPost });
